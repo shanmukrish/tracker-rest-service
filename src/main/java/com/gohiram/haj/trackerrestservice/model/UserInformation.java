@@ -1,13 +1,24 @@
 package com.gohiram.haj.trackerrestservice.model;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 public class UserInformation {
 
+	@ApiModelProperty
+	private String id;
+	
+	@ApiModelProperty
 	private String firstName;
+	
+	@ApiModelProperty
 	private String lastName;
+	
+	@ApiModelProperty
 	private String email;
+	
+	@ApiModelProperty
 	private long mobileNumber;
 	
 	
@@ -34,6 +45,12 @@ public class UserInformation {
 	}
 	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

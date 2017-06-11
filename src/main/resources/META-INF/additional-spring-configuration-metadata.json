@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "sql.insert.user.details",
+    "type": "java.lang.String",
+    "description": "A description for 'sql.insert.user.details'"
+  },
+  {
+    "name": "sql.select.user.details",
+    "type": "java.lang.String",
+    "description": "A description for 'sql.select.user.details'"
+  },
+  {
+    "name": "db.url",
+    "type": "java.lang.String",
+    "description": "A description for 'db.url'"
+  },
+  {
+    "name": "db.username",
+    "type": "java.lang.String",
+    "description": "A description for 'db.username'"
+  },
+  {
+    "name": "db.password",
+    "type": "java.lang.String",
+    "description": "A description for 'db.password'"
+  },
+  {
+    "name": "db.driverclassname",
+    "type": "java.lang.String",
+    "description": "A description for 'db.driverclassname'"
+  }
+]}

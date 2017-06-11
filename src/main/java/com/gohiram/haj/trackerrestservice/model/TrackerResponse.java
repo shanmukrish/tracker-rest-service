@@ -2,6 +2,10 @@ package com.gohiram.haj.trackerrestservice.model;
 
 import com.gohiram.haj.trackerrestservice.exception.ErrorInformation;
 
+import io.swagger.annotations.ApiModel;
+
+
+@ApiModel
 public class TrackerResponse<T> {
 
 	private ErrorInformation errorInformation;
