@@ -15,14 +15,16 @@ public class TrackerResponse<T> {
 	public ErrorInformation getErrorInformation() {
 		return errorInformation;
 	}
-	public void setErrorInformation(ErrorInformation errorInformation) {
+	public TrackerResponse<T> setErrorInformation(ErrorInformation errorInformation) {
 		this.errorInformation = errorInformation;
+		return this;
 	}
 	public T getData() {
 		return data;
 	}
-	public void setData(T data) {
+	public TrackerResponse<T> setData(T data) {
 		this.data = data;
+		return this;
 	}
 	
 	

@@ -18,7 +18,7 @@ import com.gohiram.haj.trackerrestservice.service.IUserRegistrationService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("/userdetails")
 public class UserRegistrationController {
 
 	@Autowired

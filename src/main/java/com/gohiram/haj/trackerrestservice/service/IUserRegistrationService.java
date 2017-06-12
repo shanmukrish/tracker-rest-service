@@ -1,7 +1,5 @@
 package com.gohiram.haj.trackerrestservice.service;
 
-import java.sql.SQLException;
-
 import com.gohiram.haj.trackerrestservice.exception.TrackerException;
 import com.gohiram.haj.trackerrestservice.model.UserInformation;
 
