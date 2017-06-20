@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value="UserRegistrationService")
 @RestController
-@RequestMapping("/userdetails")
+@RequestMapping("/user-details")
 public class UserRegistrationController {
 
 	@Autowired
