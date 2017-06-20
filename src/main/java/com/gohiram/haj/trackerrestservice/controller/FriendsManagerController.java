@@ -21,14 +21,14 @@ public class FriendsManagerController {
 	@Autowired
 	private IFriendsManagerService friendsManagerService;
 
-	@RequestMapping(path="/accept/{friendId}/{id}",method=RequestMethod.GET,consumes={"application/json"},produces={"application/json"})
+	@RequestMapping(path="/accept/{friendId}/{id}",method=RequestMethod.GET,produces={"application/json"})
 	public ResponseEntity<TrackerResponse<Boolean>> acceptFriendRequest(@PathVariable String id,@PathVariable String friendId) throws TrackerException {
 		return new ResponseEntity<>(
 				new TrackerResponse<Boolean>().setData(friendsManagerService.acceptFriendRequest(id,friendId)),
 				HttpStatus.ACCEPTED);
 	}
 	
-	@RequestMapping(path="/send-friend-request/{friendId}/{id}",method=RequestMethod.GET,consumes={"application/json"},produces={"application/json"})
+	@RequestMapping(path="/send-friend-request/{friendId}/{id}",method=RequestMethod.GET,produces={"application/json"})
 	public ResponseEntity<TrackerResponse<Boolean>> sendRequest(@PathVariable String id,@PathVariable String friendId) throws TrackerException {
 		return new ResponseEntity<>(
 				new TrackerResponse<Boolean>().setData(friendsManagerService.sendRequest(id,friendId)),
@@ -36,14 +36,14 @@ public class FriendsManagerController {
 	}
 	
 	
-	@RequestMapping(path="/find-friend/{friendId}/{id}",method=RequestMethod.GET,consumes={"application/json"},produces={"application/json"})
+	@RequestMapping(path="/find-friend/{friendId}/{id}",method=RequestMethod.GET,produces={"application/json"})
 	public ResponseEntity<TrackerResponse<UserInformation>> findFriendById(@PathVariable String id,@PathVariable String friendId) throws TrackerException {
 		return new ResponseEntity<>(
 				new TrackerResponse<UserInformation>().setData(friendsManagerService.findFriendById(id,friendId)),
 				HttpStatus.OK);
 	}
 	
-	@RequestMapping(path="/find-friend/{id}",method=RequestMethod.GET,consumes={"application/json"},produces={"application/json"})
+	@RequestMapping(path="/find-friend/{id}",method=RequestMethod.GET,produces={"application/json"})
 	public ResponseEntity<TrackerResponse<List<UserInformation>>> findAllFriends(@PathVariable String id) throws TrackerException {
 		return new ResponseEntity<>(
 				new TrackerResponse<List<UserInformation>>().setData(friendsManagerService.findAllFriends(id)),
