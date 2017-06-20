@@ -21,6 +21,8 @@ public class UserInformation {
 	@ApiModelProperty
 	private long mobileNumber;
 	
+	@ApiModelProperty
+	private Location location;
 	
 	public String getFirstName() {
 		return firstName;
@@ -52,9 +54,11 @@ public class UserInformation {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
-	
-	
+	public Location getLocation() {
+		return location;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 	
 }

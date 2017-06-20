@@ -14,8 +14,11 @@ import com.gohiram.haj.trackerrestservice.model.TrackerResponse;
 import com.gohiram.haj.trackerrestservice.model.UserInformation;
 import com.gohiram.haj.trackerrestservice.service.ILoginService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+
+@Api(value="LoginService")
 @RestController("/user")
 public class LoginController {
 

@@ -15,8 +15,11 @@ import com.gohiram.haj.trackerrestservice.model.TrackerResponse;
 import com.gohiram.haj.trackerrestservice.model.UserInformation;
 import com.gohiram.haj.trackerrestservice.service.IUserRegistrationService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+
+@Api(value="UserRegistrationService")
 @RestController
 @RequestMapping("/userdetails")
 public class UserRegistrationController {
