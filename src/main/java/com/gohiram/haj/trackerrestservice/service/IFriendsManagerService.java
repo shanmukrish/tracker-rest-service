@@ -13,4 +13,6 @@ public interface IFriendsManagerService {
 
 	public List<UserInformation> findAllFriends(String id) throws TrackerException;
 
+	public UserInformation findFriendById(String friendId) throws TrackerException;
+
 }

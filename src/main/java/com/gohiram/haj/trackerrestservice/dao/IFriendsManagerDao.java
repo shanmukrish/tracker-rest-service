@@ -15,4 +15,5 @@ public interface IFriendsManagerDao {
 	public List<UserInformation> findAllFriends(String id) throws TrackerException;
 	
 	
+	
 }

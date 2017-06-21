@@ -48,5 +48,7 @@ public class FriendsManagerDao implements IFriendsManagerDao {
 		});
 
 	}
+	
+
 
 }
