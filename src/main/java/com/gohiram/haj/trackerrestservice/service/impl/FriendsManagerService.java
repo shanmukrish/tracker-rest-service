@@ -28,11 +28,6 @@ public class FriendsManagerService implements IFriendsManagerService {
 		return friendsManagerDao.sendRequest(id, friendId);
 	}
 
-	@Override
-	public UserInformation findFriendById(String id, String friendId) throws TrackerException {
-
-		return friendsManagerDao.findFriendById(id, friendId);
-	}
 
 	@Override
 	public List<UserInformation> findAllFriends(String id) throws TrackerException {

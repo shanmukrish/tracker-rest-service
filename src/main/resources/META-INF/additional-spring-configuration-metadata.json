@@ -43,5 +43,25 @@
     "name": "sql.insert.user.login",
     "type": "java.lang.String",
     "description": "A description for 'sql.insert.user.login'"
+  },
+  {
+    "name": "sql.insert.friend.id",
+    "type": "java.lang.String",
+    "description": "A description for 'sql.insert.friend.id'"
+  },
+  {
+    "name": "sql.select.friend.id",
+    "type": "java.lang.String",
+    "description": "A description for 'sql.select.friend.id'"
+  },
+  {
+    "name": "sql.select.friends.id",
+    "type": "java.lang.String",
+    "description": "A description for 'sql.select.friends.id'"
+  },
+  {
+    "name": "sql.select.friends.details.id",
+    "type": "java.lang.String",
+    "description": "A description for 'sql.select.friends.details.id'"
   }
 ]}

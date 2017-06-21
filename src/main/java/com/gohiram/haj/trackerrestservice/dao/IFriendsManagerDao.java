@@ -12,8 +12,6 @@ public interface IFriendsManagerDao {
 
 	public boolean sendRequest(String id, String friendId) throws TrackerException;
 
-	public UserInformation findFriendById(String id, String friendId) throws TrackerException;
-
 	public List<UserInformation> findAllFriends(String id) throws TrackerException;
 	
 	
