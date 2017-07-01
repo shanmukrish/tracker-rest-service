@@ -25,7 +25,9 @@ public class FriendsManagerDao implements IFriendsManagerDao {
 
 	@Override
 	public boolean acceptFriendRequest(String id, String friendId) throws TrackerException {
-		return jdbcTemplate.update(insertFriendById, new Object[] { id, friendId }) > 0;
+		int count = jdbcTemplate.update(insertFriendById, new Object[] { friendId, id });
+		count += jdbcTemplate.update(insertFriendById, new Object[] { id, friendId });
+		return count > 0;
 	}
 
 	@Override
@@ -48,7 +50,5 @@ public class FriendsManagerDao implements IFriendsManagerDao {
 		});
 
 	}
-	
-
 
 }
