@@ -7,6 +7,15 @@ public class Location {
 	private String location;
 	private Date lastUpdatedOn;
 	
+	public Location()
+	{
+		
+	}
+	
+	public Location(String location)
+	{
+		this.location=location;
+	}
 	
 	public String getLocation() {
 		return location;
