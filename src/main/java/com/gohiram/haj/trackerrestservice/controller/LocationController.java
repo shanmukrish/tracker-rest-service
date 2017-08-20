@@ -1,5 +1,7 @@
 package com.gohiram.haj.trackerrestservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,9 +30,11 @@ public class LocationController {
 	}
 
 	@RequestMapping(path = "/get-recent-location/{id}", method = RequestMethod.GET)
-	public ResponseEntity<TrackerResponse<String>> getLocation(@PathVariable String id) throws TrackerException {
-		return new ResponseEntity<>(new TrackerResponse<String>().setData(locationService.getRecentLocation(id)),
+	public ResponseEntity<TrackerResponse<List<String>>> getLocation(@PathVariable String id) throws TrackerException {
+		return new ResponseEntity<>(new TrackerResponse<List<String>>().setData(locationService.getRecentLocations(id)),
 				HttpStatus.OK);
 	}
+	
+	
 
 }

@@ -21,25 +21,25 @@ public class FriendsManagerService implements IFriendsManagerService {
 	private IUserRegistrationService  userRegistrationService;
 
 	@Override
-	public boolean acceptFriendRequest(String id, String friendId) throws TrackerException {
+	public boolean acceptFriendRequest(long id, long friendId) throws TrackerException {
 
 		return friendsManagerDao.acceptFriendRequest(id, friendId);
 	}
 
 	@Override
-	public boolean sendRequest(String id, String friendId) throws TrackerException {
+	public boolean sendRequest(long id, long friendId) throws TrackerException {
 
 		return friendsManagerDao.sendRequest(id, friendId);
 	}
 
 	@Override
-	public List<UserInformation> findAllFriends(String id) throws TrackerException {
+	public List<UserInformation> findAllFriends(long id) throws TrackerException {
 
 		return friendsManagerDao.findAllFriends(id);
 	}
 
 	@Override
-	public UserInformation findFriendById(String friendId) throws TrackerException {
+	public UserInformation findFriendById(long friendId) throws TrackerException {
 		return userRegistrationService.readUserInformation(friendId);
 	}
 

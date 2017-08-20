@@ -35,7 +35,6 @@ public class UserRegistrationDao implements IUserRegistrationDao {
 		try
 		{
 			int updatedRows= jdbcTemplate.update(insertUserSql, stmt->{
-				stmt.setString(1, userInformation.getId());
 				stmt.setString(2, userInformation.getFirstName());
 				stmt.setString(3, userInformation.getLastName());
 				stmt.setString(4, userInformation.getEmail());
@@ -56,7 +55,6 @@ public class UserRegistrationDao implements IUserRegistrationDao {
 	public UserInformation readUserInformation(String id) throws TrackerException {
 		return jdbcTemplate.queryForObject(selectUserById, new Object[]{id}, (rs,rowNum)->{
 			UserInformation userInformation=new UserInformation();
-			userInformation.setId(rs.getString(1));
 			userInformation.setFirstName(rs.getString(2));
 			userInformation.setLastName(rs.getString(3));
 			userInformation.setEmail(rs.getString(4));

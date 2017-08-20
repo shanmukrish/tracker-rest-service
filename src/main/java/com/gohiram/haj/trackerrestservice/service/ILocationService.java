@@ -10,5 +10,4 @@ public interface ILocationService {
 
 	public List<String> getRecentLocations(String id) throws TrackerException;
 
-	public String getRecentLocation(String id) throws TrackerException;
 }

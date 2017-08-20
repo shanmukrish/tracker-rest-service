@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(value="UserRegistrationService")
 @RestController
 @RequestMapping("/user-details")
-public class UserRegistrationController {
+public class UserController {
 
 	@Autowired
 	private IUserRegistrationService userRegistrationService;
@@ -38,11 +38,16 @@ public class UserRegistrationController {
 	
 	@ApiOperation(consumes = "application/json", value = "/read/{id}", httpMethod = "GET", produces = "application/json", response = TrackerResponse.class)
 	@RequestMapping(path="read/{id}",method=RequestMethod.GET)
-	public ResponseEntity<TrackerResponse<UserInformation>> readUser(@PathVariable String id) throws TrackerException
+	public ResponseEntity<TrackerResponse<UserInformation>> readUser(@PathVariable long id) throws TrackerException
 	{
 		TrackerResponse<UserInformation> response=new TrackerResponse<>(); 
 		response.setData(userRegistrationService.readUserInformation(id));
 		return new ResponseEntity<>(response,HttpStatus.OK);
 	}
-
+	
+	@RequestMapping(path="is-user-exists/{id}",method=RequestMethod.GET)
+	public ResponseEntity<TrackerResponse<Boolean>> isUserExists(@PathVariable Long id) throws TrackerException
+	{
+		return  new ResponseEntity<>(new TrackerResponse<Boolean>().setData(userRegistrationService.isUserRegistered(id)),HttpStatus.OK);
+	}
 }

@@ -8,9 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.gohiram.haj.trackerrestservice.dao.IFriendsManagerDao;
-import com.gohiram.haj.trackerrestservice.dao.ILocationDao;
+import com.gohiram.haj.trackerrestservice.dao.LocationRepository;
 import com.gohiram.haj.trackerrestservice.exception.TrackerException;
-import com.gohiram.haj.trackerrestservice.model.Location;
 import com.gohiram.haj.trackerrestservice.model.UserInformation;
 
 @Repository
@@ -25,40 +24,29 @@ public class FriendsManagerDao implements IFriendsManagerDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	@Autowired
-	private ILocationDao locationDao;
-	
+
 	@Override
-	public boolean acceptFriendRequest(String id, String friendId) throws TrackerException {
+	public boolean acceptFriendRequest(long id, long friendId) throws TrackerException {
 		int count = jdbcTemplate.update(insertFriendById, new Object[] { friendId, id });
 		count += jdbcTemplate.update(insertFriendById, new Object[] { id, friendId });
 		return count > 0;
 	}
 
 	@Override
-	public boolean sendRequest(String id, String friendId) throws TrackerException {
+	public boolean sendRequest(long id, long friendId) throws TrackerException {
 
 		return false;
 	}
 
 	@Override
-	public List<UserInformation> findAllFriends(String id) throws TrackerException {
+	public List<UserInformation> findAllFriends(long id) throws TrackerException {
 
 		return jdbcTemplate.query(selectFriendsById, new Object[] { id }, (rs, rowNum) -> {
 			UserInformation userInformation = new UserInformation();
-			userInformation.setId(rs.getString("ID"));
 			userInformation.setFirstName(rs.getString("FIRST_NAME"));
 			userInformation.setLastName(rs.getString("LAST_NAME"));
 			userInformation.setMobileNumber(rs.getLong("MOBILE_NUMBER"));
 			userInformation.setEmail(rs.getString("EMAIL_ID"));
-			Location location=new Location();
-			try {
-				location.setLocation(locationDao.getRecentLocation(userInformation.getId()));
-				userInformation.setLocation(location);
-			} catch (TrackerException e) {
-				e.printStackTrace();
-			}
-			
 			return userInformation;
 		});
 

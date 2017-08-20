@@ -14,6 +14,7 @@ import com.gohiram.haj.trackerrestservice.exception.TrackerException;
 import com.gohiram.haj.trackerrestservice.model.TrackerResponse;
 import com.gohiram.haj.trackerrestservice.model.UserInformation;
 import com.gohiram.haj.trackerrestservice.service.IFriendsManagerService;
+import com.gohiram.haj.trackerrestservice.service.impl.UserRegistrationService;
 
 @RestController("/friends")
 public class FriendsManagerController {
@@ -21,9 +22,12 @@ public class FriendsManagerController {
 	@Autowired
 	private IFriendsManagerService friendsManagerService;
 
+	@Autowired
+	private UserRegistrationService userRegistrationService;
+
 	@RequestMapping(path = "/accept/{friendId}/{id}", method = RequestMethod.GET, produces = { "application/json" })
-	public ResponseEntity<TrackerResponse<Boolean>> acceptFriendRequest(@PathVariable String id,
-			@PathVariable String friendId) throws TrackerException {
+	public ResponseEntity<TrackerResponse<Boolean>> acceptFriendRequest(@PathVariable long id,
+			@PathVariable long friendId) throws TrackerException {
 		return new ResponseEntity<>(
 				new TrackerResponse<Boolean>().setData(friendsManagerService.acceptFriendRequest(id, friendId)),
 				HttpStatus.ACCEPTED);
@@ -31,14 +35,18 @@ public class FriendsManagerController {
 
 	@RequestMapping(path = "/send-friend-request/{friendId}/{id}", method = RequestMethod.GET, produces = {
 			"application/json" })
-	public ResponseEntity<TrackerResponse<Boolean>> sendRequest(@PathVariable String id, @PathVariable String friendId)
+	public ResponseEntity<TrackerResponse<Boolean>> sendRequest(@PathVariable long id, @PathVariable long friendId)
 			throws TrackerException {
+		boolean isUserRegistered = userRegistrationService.isUserRegistered(friendId);
+		if (!isUserRegistered) {
+			return new ResponseEntity<>(new TrackerResponse<Boolean>().setData(false), HttpStatus.NO_CONTENT);
+		}
 		return new ResponseEntity<>(
 				new TrackerResponse<Boolean>().setData(friendsManagerService.sendRequest(id, friendId)), HttpStatus.OK);
 	}
 
 	@RequestMapping(path = "/find-friends/{id}", method = RequestMethod.GET, produces = { "application/json" })
-	public ResponseEntity<TrackerResponse<List<UserInformation>>> findAllFriends(@PathVariable String id)
+	public ResponseEntity<TrackerResponse<List<UserInformation>>> findAllFriends(@PathVariable long id)
 			throws TrackerException {
 		return new ResponseEntity<>(
 				new TrackerResponse<List<UserInformation>>().setData(friendsManagerService.findAllFriends(id)),
@@ -46,10 +54,14 @@ public class FriendsManagerController {
 	}
 
 	@RequestMapping(path = "/find-friend/{friendId}", method = RequestMethod.GET, produces = { "application/json" })
-	public ResponseEntity<TrackerResponse<UserInformation>> findFriendById(@PathVariable String friendId) throws TrackerException {
-		return new ResponseEntity<>(
-				new TrackerResponse<UserInformation>().setData(friendsManagerService.findFriendById(friendId)),
-				HttpStatus.OK);
+	public ResponseEntity<TrackerResponse<UserInformation>> findFriendById(@PathVariable long friendId)
+			throws TrackerException {
+		boolean isUserRegistered = userRegistrationService.isUserRegistered(friendId);
+		UserInformation userInformation = null;
+		if (isUserRegistered) {
+			userInformation = friendsManagerService.findFriendById(friendId);
+		}
+		return new ResponseEntity<>(new TrackerResponse<UserInformation>().setData(userInformation), HttpStatus.OK);
 	}
 
 }

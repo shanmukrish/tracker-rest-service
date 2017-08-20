@@ -6,6 +6,6 @@ import com.gohiram.haj.trackerrestservice.model.UserInformation;
 public interface IUserRegistrationService {
 
 	public boolean registerUser(UserInformation userInformation) throws TrackerException;
-	public boolean isUserRegistered(String id) throws TrackerException;
-	public UserInformation readUserInformation(String id) throws TrackerException;
+	boolean isUserRegistered(Long id) throws TrackerException;
+	UserInformation readUserInformation(long id) throws TrackerException;
 }
