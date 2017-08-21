@@ -16,6 +16,9 @@ import com.gohiram.haj.trackerrestservice.model.UserInformation;
 import com.gohiram.haj.trackerrestservice.service.IFriendsManagerService;
 import com.gohiram.haj.trackerrestservice.service.impl.UserRegistrationService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 @RestController("/friends")
 public class FriendsManagerController {
 
@@ -25,11 +28,12 @@ public class FriendsManagerController {
 	@Autowired
 	private UserRegistrationService userRegistrationService;
 
-	@RequestMapping(path = "/accept/{friendId}/{id}", method = RequestMethod.GET, produces = { "application/json" })
+	@ApiOperation(value = "Change status of friends request")
+	@RequestMapping(path = "/accept/{friendId}/{id}/{status}", method = RequestMethod.GET, produces = { "application/json" })
 	public ResponseEntity<TrackerResponse<Boolean>> acceptFriendRequest(@PathVariable long id,
-			@PathVariable long friendId) throws TrackerException {
+			@PathVariable long friendId,@ApiParam(name="status") @PathVariable String status) throws TrackerException {
 		return new ResponseEntity<>(
-				new TrackerResponse<Boolean>().setData(friendsManagerService.acceptFriendRequest(id, friendId)),
+				new TrackerResponse<Boolean>().setData(friendsManagerService.acceptFriendRequest(id, friendId,status)),
 				HttpStatus.ACCEPTED);
 	}
 

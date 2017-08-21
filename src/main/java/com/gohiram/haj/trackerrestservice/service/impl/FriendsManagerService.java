@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gohiram.haj.trackerrestservice.dao.FriendsRepository;
 import com.gohiram.haj.trackerrestservice.dao.IFriendsManagerDao;
 import com.gohiram.haj.trackerrestservice.exception.TrackerException;
+import com.gohiram.haj.trackerrestservice.model.Friend;
 import com.gohiram.haj.trackerrestservice.model.UserInformation;
 import com.gohiram.haj.trackerrestservice.service.IFriendsManagerService;
 import com.gohiram.haj.trackerrestservice.service.IUserRegistrationService;
@@ -20,16 +22,23 @@ public class FriendsManagerService implements IFriendsManagerService {
 	@Autowired
 	private IUserRegistrationService  userRegistrationService;
 
+	@Autowired
+	private FriendsRepository friendsRepository;
+	
 	@Override
-	public boolean acceptFriendRequest(long id, long friendId) throws TrackerException {
+	public boolean acceptFriendRequest(long id, long friendId, String status) throws TrackerException {
 
-		return friendsManagerDao.acceptFriendRequest(id, friendId);
+		return friendsRepository.updateFriendRequest(status, id, friendId)>0;
 	}
 
 	@Override
 	public boolean sendRequest(long id, long friendId) throws TrackerException {
 
-		return friendsManagerDao.sendRequest(id, friendId);
+		Friend friend=new Friend();
+		friend.setFriendId(friendId);
+		friend.setId(id);
+		friend.setStatus("PENDING");
+		return friendsRepository.save(friend)!=null;
 	}
 
 	@Override

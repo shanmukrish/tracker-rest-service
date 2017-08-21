@@ -7,12 +7,13 @@ import com.gohiram.haj.trackerrestservice.model.UserInformation;
 
 public interface IFriendsManagerService {
 
-	public boolean acceptFriendRequest(long id, long friendId) throws TrackerException;
 
 	public boolean sendRequest(long id, long friendId) throws TrackerException;
 
 	public List<UserInformation> findAllFriends(long id) throws TrackerException;
 
 	public UserInformation findFriendById(long friendId) throws TrackerException;
+
+	boolean acceptFriendRequest(long id, long friendId, String status) throws TrackerException;
 
 }

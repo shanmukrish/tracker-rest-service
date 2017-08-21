@@ -1,8 +1,6 @@
 package com.gohiram.haj.trackerrestservice.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -21,10 +19,8 @@ public class UserInformation {
 	private String lastName;
 	
 	@ApiModelProperty
-	@GeneratedValue
 	private String emailId;
 	
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id
 	@ApiModelProperty
 	private long mobileNumber;
