@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.gohiram.haj.trackerrestservice.dao.FriendsRepository;
-import com.gohiram.haj.trackerrestservice.dao.IFriendsManagerDao;
 import com.gohiram.haj.trackerrestservice.exception.TrackerException;
 import com.gohiram.haj.trackerrestservice.model.Friend;
 import com.gohiram.haj.trackerrestservice.model.UserInformation;
@@ -18,8 +17,6 @@ import com.gohiram.haj.trackerrestservice.service.IUserRegistrationService;
 @Service
 public class FriendsManagerService implements IFriendsManagerService {
 
-	@Autowired
-	private IFriendsManagerDao friendsManagerDao;
 
 	@Autowired
 	private IUserRegistrationService userRegistrationService;
@@ -65,9 +62,9 @@ public class FriendsManagerService implements IFriendsManagerService {
 	}
 
 	@Override
-	public List<UserInformation> findAllFriends(long id) throws TrackerException {
+	public List<Friend> findAllFriends(long id) throws TrackerException {
 
-		return friendsManagerDao.findAllFriends(id);
+		return friendsRepository.findAllFriends(id);
 	}
 
 	@Override

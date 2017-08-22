@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gohiram.haj.trackerrestservice.exception.TrackerException;
+import com.gohiram.haj.trackerrestservice.model.Friend;
 import com.gohiram.haj.trackerrestservice.model.TrackerResponse;
 import com.gohiram.haj.trackerrestservice.model.UserInformation;
 import com.gohiram.haj.trackerrestservice.service.IFriendsManagerService;
@@ -44,10 +45,10 @@ public class FriendsManagerController {
 	}
 
 	@RequestMapping(path = "/find-friends/{id}", method = RequestMethod.GET, produces = { "application/json" })
-	public ResponseEntity<TrackerResponse<List<UserInformation>>> findAllFriends(@PathVariable long id)
+	public ResponseEntity<TrackerResponse<List<Friend>>> findAllFriends(@PathVariable long id)
 			throws TrackerException {
 		return new ResponseEntity<>(
-				new TrackerResponse<List<UserInformation>>().setData(friendsManagerService.findAllFriends(id)),
+				new TrackerResponse<List<Friend>>().setData(friendsManagerService.findAllFriends(id)),
 				HttpStatus.OK);
 	}
 
