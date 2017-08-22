@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.gohiram.haj.trackerrestservice.dao.IFriendsManagerDao;
-import com.gohiram.haj.trackerrestservice.dao.LocationRepository;
 import com.gohiram.haj.trackerrestservice.exception.TrackerException;
 import com.gohiram.haj.trackerrestservice.model.UserInformation;
 

@@ -12,7 +12,7 @@ public interface IFriendsManagerService {
 
 	public List<UserInformation> findAllFriends(long id) throws TrackerException;
 
-	public UserInformation findFriendById(long friendId) throws TrackerException;
+	public UserInformation findFriendById(long id, long friendId) throws TrackerException;
 
 	boolean acceptFriendRequest(long id, long friendId, String status) throws TrackerException;
 

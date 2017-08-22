@@ -17,4 +17,7 @@ public interface FriendsRepository extends JpaRepository<Friend,Long>{
 	@Modifying
 	@Query("update Friends friend set friend.status=:status where friend.id=:id and friend.friendId=:friendId")
 	public int updateFriendRequest(@Param("status") String status,@Param("id") long id,@Param("friendId") long friendId);
+	
+	@Query("select count(friend.id) from Friends friend where friend.id=:id and friend.friendId=:friendId")
+	public int isFriendAlready(@Param("id") long id, @Param("friendId") long friendId);
 }
