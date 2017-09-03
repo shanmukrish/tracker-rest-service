@@ -1,11 +1,17 @@
 package com.gohiram.haj.trackerrestservice.exception;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
+@NoArgsConstructor
+@Getter
+@Setter
 public class ErrorInformation {
 
 	@ApiModelProperty(name = "message")
@@ -16,29 +22,5 @@ public class ErrorInformation {
 
 	@ApiModelProperty(name = "developerMessage")
 	private String developerMessage;
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getDeveloperMessage() {
-		return developerMessage;
-	}
-
-	public void setDeveloperMessage(String developerMessage) {
-		this.developerMessage = developerMessage;
-	}
-
-	public HttpStatus getStatusCode() {
-		return statusCode;
-	}
-
-	public void setStatusCode(HttpStatus statusCode) {
-		this.statusCode = statusCode;
-	}
 
 }
